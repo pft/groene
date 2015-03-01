@@ -127,6 +127,9 @@ function parseIndex(err, res, body){
           $body.find('footer, .article-social-top, time').remove();
           // Remove empty paragraphs.
           $body.find('p:empty').remove();
+          // Remove any slideshow images after the first (they are
+          // present further on in the article)
+          $body.find('.slideshow a~a').remove();
           $body.find('img').each(function(){
             $(this).attr('src', $(this).attr('src').replace(/\?.*$/, ''));
           });
