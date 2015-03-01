@@ -127,6 +127,9 @@ function parseIndex(err, res, body){
           $body.find('footer, .article-social-top, time').remove();
           // Remove empty paragraphs.
           $body.find('p:empty').remove();
+          $body.find('img').each(function(){
+            $(this).attr('src', $(this).attr('src').replace(/\?.*$/, ''));
+          });
           $body.find('blockquote').each(function(){
             if ($(this).text().charAt(0) === "‘")
               $(this).addClass('minhair');
