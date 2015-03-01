@@ -81,11 +81,16 @@ function afterLogin(err, res, body){
               parseIndex);
 }
 
+function notReady(soon){
+  console.error('Issue ' + book.issue + ' not (yet) available')
+  if (soon) console.warn('... but it soon will be');
+  process.exit(11);
+}
+
 function parseIndex(err, res, body){
   if (res.statusCode === 404
       || (body.indexOf(404) > -1)) {
-    console.error('Issue ' + book.issue + ' not (yet) available')
-    process.exit(11);
+    notReady();
   }
   var $ = cheerio.load(body);
   book.cover = base + $('.cover img').attr('src');
@@ -167,7 +172,7 @@ function parseIndex(err, res, body){
         // console.log(article);
         // book.categories[category].push(article);
       });
-    })
+    }).length || notReady(true);
 }
 
 function createEpub(){
