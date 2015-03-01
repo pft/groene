@@ -169,7 +169,7 @@ function createEpub(){
   //console.log(book);
   var myPeepub = new Peepub(book);
   var pad      = "00";
-  var filename = 'deGroeneAmsterdammer#'
+  var filename = 'GroeneAmsterdammer#'
         + (pad+book.issue.toString()).slice(-pad.length)
         + '.epub';
   myPeepub.create(filename)
