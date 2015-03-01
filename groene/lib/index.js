@@ -94,36 +94,32 @@ function parseIndex(err, res, body){
   }
   var $ = cheerio.load(body);
   book.cover = base + $('.cover img').attr('src');
-  var pgNum = -1;
+  var tagPages = {};
 
   $('#column-everyone section.category-articles')
     .each(function(n){
-      pgNum++;
       var category = $(this).find('h3').text();
       book.categories[category] = [];
       var tocArticle = {
         title : '» ' + category,
         url : Url.resolve(base, 'category/' + category),
+        href : category,
         hidden: true,
         toc : true,             // maybe not...
         body : '<h3>' + category + '</h3>'
       }
       book.pages.push(tocArticle);
       $(this).find('article').each(function(n){
-        pgNum++;
-        var pad      = "00000";
-        var name     = 'e' + (pad+pgNum.toString()).slice(-pad.length);
-        var path = name + '.html';
 
         var article =
               { title : $(this).find('h4').text(),
                 description : $(this).find('h5').text(),
                 url : Url.resolve(base, $(this).find('a').attr('href')),
-                // href : Path.basename($(this).find('a').attr('href')),
+                href : Path.basename($(this).find('a').attr('href')),
                 toc : true,
                 author : $(this).find('p').text().replace(/^door /, '') };
         
-        tocArticle.body += '<p><a href="' + path + '">' + article.title + '</a></p>';
+        tocArticle.body += '<p><a href="' + article.href + '">' + article.title + '</a></p>';
         
         book.pages.push(article);
         request.get(article.url, function(err, res, body){
@@ -158,6 +154,22 @@ function parseIndex(err, res, body){
             })
           $body.find('.author').html($body.find('.author').text())
           $body.find('.credits').html($body.find('.credits').text())
+          $body
+            .find('.tags a')
+            .map(function(){
+              var tag = Path.basename($(this).attr('href'));
+              $(this).attr('href', tag);
+              var title = $(this).text();
+              if (!tagPages[tag]) tagPages[tag] = {
+                title : title,
+                body  : '<h3>' + title + '</h3>',
+                href  : tag,
+                toc   : false,
+                hidden: true
+              };
+              tagPages[tag].body += '<p><a href="' + article.href + '">'
+                + article.title + '</a></p>';
+            })
           article.body =
             ( $body.find('.tags').html() ?
               '<div class="tags">' + $body.find('.tags').html() + "</tags>"
@@ -166,6 +178,9 @@ function parseIndex(err, res, body){
             + ( $body.find('.main-article-content body').html() // Fix DOCTYPE bug on website
                 || $body.find('.main-article-content').html() )
           if (book.readyForPrinting()){
+            Object.keys(tagPages).forEach(function(tagPage){
+              book.pages.push(tagPages[tagPage]);
+            });
             createEpub();
           }
         });          
