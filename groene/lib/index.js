@@ -177,7 +177,7 @@ function parseIndex(err, res, body){
             })
           article.body =
             ( $body.find('.tags').html() ?
-              '<div class="tags">' + $body.find('.tags').html() + "</tags>"
+              '<div class="tags">' + $body.find('.tags').html() + "</div>"
               : '' )
             + $body.find('header').html()
             + ( $body.find('.main-article-content body').html() // Fix DOCTYPE bug on website
