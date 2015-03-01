@@ -1,5 +1,5 @@
 .article-details {
-    font-family: "Salvo Sans Cond Medium",sans-serif;
+    font-family: "Salvo Sans Cond Medium", sans-serif;
     font-size: 0.8125em;
     font-weight: bold;
 }
@@ -35,7 +35,7 @@ img {
     font-weight: bold;
 }
 .intro {
-    font-family:  "Salvo Serif Light",  sans-serif;
+    font-family:  "Salvo Serif Light", sans-serif;
 }
 abbr {
     font-size: 75%;
@@ -62,4 +62,8 @@ blockquote {
 /* Some micro-typography */
 blockquote.minhair {
     text-indent: -3pt;
+}
+/* TOC pages */
+.description {
+    font-style: oblique;
 }

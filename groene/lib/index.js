@@ -118,13 +118,17 @@ function parseIndex(err, res, body){
                 href : Path.basename($(this).find('a').attr('href')),
                 toc : true,
                 author : $(this).find('p').text().replace(/^door /, '') };
-        
-        tocArticle.body += '<p><a href="' + article.href + '">' + article.title + '</a></p>';
-        
+
         book.pages.push(article);
         request.get(article.url, function(err, res, body){
           var $ = cheerio.load(body);
           var $body = $('.main-article');
+          if (!article.description) article.description = $body.find('.intro').text();
+
+          tocArticle.body += '<h4><a href="' + article.href + '">' + article.title + '</a></h4>';
+          tocArticle.body += '<p class="summary">' + article.description + '</p>';
+          tocArticle.body += '<p class="credits">door ' + article.author + '</p>';
+
           $body.find('footer, .article-social-top, time').remove();
           // Remove empty paragraphs.
           $body.find('p:empty').remove();
@@ -167,8 +171,9 @@ function parseIndex(err, res, body){
                 toc   : false,
                 hidden: true
               };
-              tagPages[tag].body += '<p><a href="' + article.href + '">'
-                + article.title + '</a></p>';
+              tagPages[tag].body += '<h4><a href="' + article.href + '">' + article.title + '</a></h4>';
+              tagPages[tag].body += '<p class="credits">door ' + article.author + '</p>';
+              tagPages[tag].body += '<p class="description">' + article.description  + '</p>';
             })
           article.body =
             ( $body.find('.tags').html() ?
