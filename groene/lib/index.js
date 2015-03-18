@@ -143,7 +143,7 @@ function parseIndex(err, res, body){
               $(this).addClass('minhair');
           });
           $body.find('.T_tekst_artikel,'
-                    + '.T_tekst_artikel_geen inspring,'
+                    + '.T_tekst_artikel_geen_inspring,'
                     + '.T_tekst_artikel_kort,'
                     + '.T_tekst_artikel_lang,'
                     + '.T_tekst_naschrift_lijn')
