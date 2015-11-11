@@ -68,14 +68,14 @@ function login(){
            }
            request.post({'uri' : Helper.login_url,
                          form: data,
-                         
+
                          followAllRedirects : true
                         }, afterLogin)
          })
 }
 
 function afterLogin(err, res, body){
-  console.log('Downloading issue', book.issue);
+  console.log('Downloading issue', book.issue, 'from', book.url);
   request.get({uri : book.url,
                followAllRedirects : true },
               parseIndex);
