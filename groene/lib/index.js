@@ -27,7 +27,7 @@ var book = {
     jan1.setDate(31)            // Dec 31 for the year 2015
     var week = Math.ceil(((today.getTime() -
                            jan1.getTime()) / 86400000) / 7);
-    return week;
+    return year % 100 + '' + week;
   })(),
   pages : []
 };
@@ -158,7 +158,7 @@ function parseIndex(err, res, body){
           $body.find('.T_tekst_kleinkapitaal').each(function(){
             $(this).replaceWith($('<abbr>' + $(this).text().toUpperCase() + '</abbr>'))
           })
-          // Do not let links open browser. 
+          // Do not let links open browser.
           $body.find('header img, .main-article-content body img')
             .each(function(){
               $(this).attr('src', Url.resolve(base, $(this).attr('src')))
@@ -195,7 +195,7 @@ function parseIndex(err, res, body){
             });
             createEpub();
           }
-        });          
+        });
         // console.log(article);
         // book.categories[category].push(article);
       });
