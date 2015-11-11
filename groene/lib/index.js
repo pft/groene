@@ -8,7 +8,7 @@ var base = 'https://www.groene.nl';
 
 var book = {
   title : "De Groene Amsterdammer",
-  categories : [],
+  categories : ["News"],
   languages : ["nl-NL"],
   creator : {
     name : "Groene Amsterdammer",
