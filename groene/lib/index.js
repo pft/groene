@@ -17,7 +17,7 @@ var book = {
   },
   publisher : "NV Weekblad De Groene Amsterdammer",
   css : fs.readFileSync('style.css', {encoding:'utf-8'}),
-  issue : (function(){
+  issue : process.argv[2] || (function(){
     var today = new Date();
     //today.setHours(0, 0, 0, 0);
     var year = today.getFullYear();
@@ -83,9 +83,16 @@ function afterLogin(err, res, body){
 
 function notReady(soon){
   console.error('Issue ' + book.issue + ' not (yet) available')
-  if (soon) console.warn('... but it soon will be');
-  process.exit(11);
-}
+  if (soon)
+    console.warn('... but it soon will be');
+  else {
+    console.log('=========================')
+    console.log('To download another issue than that computed for this week,')
+    console.log('such as a "dubbeldik nummer",')
+    console.log('provide this program with the issue number, e.g.:');
+    console.log(process.argv[0], process.argv[1], '17_18');
+  }
+  process.exit(11); }
 
 function parseIndex(err, res, body){
   if (res.statusCode === 404
