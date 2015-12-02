@@ -4,12 +4,13 @@
   "description": "Download de Groene als epub",
   "main": "index.js",
   "bin": {
-    "groene" : "index.js"
+    "groene": "index.js"
   },
   "dependencies": {
-    "request": "^2.53.0",
     "cheerio": "^0.18.0",
-    "pe-epub": "^0.3.7"
+    "cp": "^0.2.0",
+    "pe-epub": "^0.3.7",
+    "request": "^2.53.0"
   },
   "devDependencies": {},
   "scripts": {
