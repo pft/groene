@@ -16,10 +16,10 @@ var book = {
     "file-as" : "Groene Amsterdammer"
   },
   publisher : "NV Weekblad De Groene Amsterdammer",
-  css : fs.readFileSync('style.css', {encoding:'utf-8'}),
+  css : fs.readFileSync(Path.join(__dirname, 'style.css'),
+                        {encoding:'utf-8'}),
   issue : process.argv[2] || (function(){
     var today = new Date();
-    //today.setHours(0, 0, 0, 0);
     var year = today.getFullYear();
     var jan1 = new Date();
     jan1.setHours(12,0,0,0);    // Time of a new issue being published
@@ -158,7 +158,7 @@ function parseIndex(err, res, body){
           $body.find('.T_tekst_kleinkapitaal').each(function(){
             $(this).replaceWith($('<abbr>' + $(this).text().toUpperCase() + '</abbr>'))
           })
-          // Do not let links open browser. 
+          // Do not let links open browser.
           $body.find('header img, .main-article-content body img')
             .each(function(){
               $(this).attr('src', Url.resolve(base, $(this).attr('src')))
@@ -195,7 +195,7 @@ function parseIndex(err, res, body){
             });
             createEpub();
           }
-        });          
+        });
         // console.log(article);
         // book.categories[category].push(article);
       });
