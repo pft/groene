@@ -1,0 +1,28 @@
+{
+  "name": "groene",
+  "version": "1.0.0",
+  "description": "Download de Groene als epub",
+  "main": "index.js",
+  "bin": {
+    "groene" : "index.js"
+  },
+  "dependencies": {
+    "request": "^2.53.0",
+    "cheerio": "^0.18.0",
+    "pe-epub": "^0.3.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "."
+  },
+  "keywords": [
+    "groene",
+    "epub"
+  ],
+  "author": "Niels Giesen",
+  "license": "GPL-3.0"
+}
