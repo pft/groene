@@ -9,6 +9,7 @@
   "dependencies": {
     "cheerio": "^0.18.0",
     "cp": "^0.2.0",
+    "jsdom": "^9.9.1",
     "pe-epub": "^0.3.7",
     "request": "^2.53.0"
   },

@@ -1,12 +1,41 @@
+/* first words in article (bold type): .article-section-start */
+
+/* Classes we can expect are */
+/* article-section-start s */
+/* book injected-book */
+/* book-cover */
+/* book-author s */
+/* book-title s */
+/* book-byline */
+/* book-order s */
+/* article-figure figure-links */
+/* lightbox fluidbox__instance-1 fluidbox--initialized fluidbox--closed fluidbox--ready */
+/* fluidbox__wrap */
+/* fluidbox__thumb */
+/* fluidbox__ghost */
+/* figure-credits */
+/* figure-copy */
+/* streamer */
+/* small-caps */
+
 body {
     margin: auto 1em;
     line-height: 1.5em;
 }
-.article-details {
+
+.streamer {
+    border-left: 3px solid #ee1d24;
     font-family: "Salvo Sans Cond Medium", sans-serif;
-    font-size: 0.8125em;
+    font-size: 1.3125rem;
+    line-height: 1.8125rem;
+    padding-left: 10px;
+}
+
+.article-section-start {
+    font-family: "Salvo Sans Cond Medium", sans-serif;
     font-weight: bold;
 }
+
 p.credits, time {
     color: #949494;
 }
@@ -17,36 +46,14 @@ img {
     max-width: 100%;
     max-height: 100%;
 }
-.tags ul {
-    padding-left: 0;
-    margin-left: 0;
-}
-.tags ul li {
-    display: inline;
-    list-style-type: none;
-    background-color: #494949;
-    border-radius: 3px;
-    padding: 5px 8px;
-    margin-right: 3pt;
-}
-.tags ul li a {
-    text-decoration: none;
-    color: #fff;
-    font-weight: bold;
-}
-.O_aanhef {
-    text-transform: uppercase;
-    font-weight: bold;
-}
+
 .intro {
     font-family:  "Salvo Serif Light", sans-serif;
 }
 abbr {
     font-size: 75%;
 }
-.T_tekst_cursief {
-  font-style: oblique;
-}
+
 sup {
     top: -0.5em;
 }
