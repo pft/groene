@@ -18,6 +18,42 @@
 /* streamer */
 /* small-caps */
 
+/* In the TOC we may encounter: */
+
+/* page-subtitle tiny-border */
+/* issue-toc-category category-line-below  groene-default */
+/* issue-toc-article */
+/* issue-feature */
+/* promo promo-large */
+/* promo-thumb */
+/* article-thumb */
+/* promo-content */
+/* promo-header */
+/* promo-subtitle */
+/* promo-category */
+/* promo-title */
+/* promo-intro */
+/* promo-author tiny-border */
+/* teaser-row */
+/* teaser teaser-with-img */
+/* teaser-img */
+/* teaser-content groene-default */
+/* s subtitle */
+/* issue-toc-category  groene-default */
+/* in-the-world */
+/* teaser-with-img */
+/* article-thumb-vignette thumb-mh */
+/* title-only-title */
+/* image-and-title */
+/* article-thumb-portrait thumb-mh */
+/* issue-toc-category category-line-above  groene-culture */
+/* ampersand */
+/* title-only groene-culture */
+/* title-only-author */
+/* issue-toc-category category-line-above category-line-below  groene-culture */
+/* teaser-content groene-culture */
+/* issue-toc-category  groene-culture */
+
 body {
     margin: auto 1em;
     line-height: 1.5em;
@@ -46,7 +82,13 @@ img {
     max-width: 100%;
     max-height: 100%;
 }
-
+.in-the-world .teaser-img {
+    max-width: 15%;
+    vertical-align: middle;
+}
+.in-the-world .teaser-with-img > * {
+    display: inline-block;
+}
 .intro {
     font-family:  "Salvo Serif Light", sans-serif;
 }
