@@ -9,7 +9,7 @@
   "dependencies": {
     "cp": "^0.2.0",
     "jsdom": "^9.9.1",
-    "pe-epub": "^0.3.7",
+    "pe-epub": "^0.3.8",
     "request": "^2.53.0"
   },
   "devDependencies": {},
